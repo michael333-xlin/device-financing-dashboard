@@ -1,0 +1,23 @@
+# Snowflake CLI project definition. From this folder run:
+#   snow streamlit deploy --replace --connection <your_connection>
+definition_version: 2
+entities:
+  device_financing_dashboard:
+    type: streamlit
+    identifier:
+      name: DEVICE_FINANCING_DASHBOARD
+      database: DEVICE_FINANCING_DB
+      schema: FINANCING
+    title: "Device Financing Decisions"
+    query_warehouse: DASHBOARD_WH
+    main_file: streamlit_app.py
+    stage: STREAMLIT_STAGE
+    artifacts:
+      - streamlit_app.py
+      - config.py
+      - data_layer.py
+      - scoring.py
+      - finance_rules.py
+      - ui.py
+      - environment.yml
+      - .streamlit/config.toml

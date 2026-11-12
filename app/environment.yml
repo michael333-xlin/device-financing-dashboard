@@ -1,0 +1,19 @@
+# Streamlit in Snowflake (warehouse runtime) packages, from the Snowflake Anaconda channel.
+# IMPORTANT: scikit-learn, scipy and numpy must match the versions used by model/train_register.py.
+# The warehouse runtime uses Python 3.11 by default (3.12 is not supported).
+# Streamlit must be pinned: the default (1.22) conflicts with recent snowflake-ml-python.
+# After training, check:  SELECT DISTINCT SKLEARN_VERSION FROM DEVICE_FINANCING_DB.FINANCING.MODEL_INFO;
+# and put that version below. A mismatch breaks loading the stage fallback model.
+
+name: app_environment
+channels:
+  - snowflake
+dependencies:
+  - streamlit=1.50.0
+  - scikit-learn=1.9.1
+  - snowflake-ml-python
+  - joblib
+  - pandas
+  - altair
+  - scipy=1.15.3
+  - numpy=2.3.5
